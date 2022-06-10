@@ -1,0 +1,16 @@
+<table border=1px>
+  <thead>
+    <th>名前</th>
+    <th>メールアドレス</th>
+    <th>作成日</th>
+  </thead>
+  <tbody>
+    <td><%= @user.name %></td>
+    <td><%= @user.email %></td>
+    <td><%= @user.created_at %></td>
+  </tbody>
+</table>
+<hr>
+<%= month_calendar do |date| %>
+<%= date.day %>
+<% end %>
