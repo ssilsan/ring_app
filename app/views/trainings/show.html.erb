@@ -1,0 +1,17 @@
+<p>
+  <strong>走行距離:</strong>
+  <%= @training.mileage %>
+</p>
+
+<p>
+  <strong>消費Kcal:</strong>
+  <%= @training.kcal %>
+</p>
+
+<p>
+  <strong>投稿日:</strong>
+  <%= @training.start_time %>
+</p>
+
+<%= link_to 'Edit', edit_training_path(@training) %> |
+<%= link_to 'Back', trainings_path %>

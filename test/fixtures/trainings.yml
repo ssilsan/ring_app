@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mileage: 1
+  kcal: 1
+  created_date: 2022-06-14
+
+two:
+  mileage: 1
+  kcal: 1
+  created_date: 2022-06-14
