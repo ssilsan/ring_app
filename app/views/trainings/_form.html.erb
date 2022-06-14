@@ -1,0 +1,32 @@
+<%= form_with(model: training) do |form| %>
+<% if training.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(training.errors.count, "error") %> prohibited this training from being saved:</h2>
+
+  <ul>
+    <% training.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= form.label :走行距離 %>
+  <%= form.number_field :mileage %>
+</div>
+
+<div class="field">
+  <%= form.label :消費kcal %>
+  <%= form.number_field :kcal %>
+</div>
+
+<div class="field">
+  <%= form.label :投稿日 %>
+  <%= form.datetime_select :start_time%>
+</div>
+
+<div class="actions">
+  <%= form.submit %>
+</div>
+<% end %>

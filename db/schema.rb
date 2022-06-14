@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_09_124754) do
+ActiveRecord::Schema.define(version: 2022_06_14_061230) do
+
+  create_table "fitskills", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "kcal"
+    t.string "category"
+    t.string "skill"
+    t.integer "count"
+    t.integer "mileage"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "start_time"
+  end
+
+  create_table "trainings", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "mileage"
+    t.integer "kcal"
+    t.date "created_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "start_time"
+    t.integer "user_id"
+  end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
