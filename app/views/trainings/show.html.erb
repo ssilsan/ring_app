@@ -1,17 +1,36 @@
 <p>
+  <strong>投稿日:</strong>
+  <%= @training.start_time %>
+</p>
+<p>
   <strong>走行距離:</strong>
-  <%= @training.mileage %>
+  <%= @training.mileage %>km
 </p>
 
 <p>
   <strong>消費Kcal:</strong>
-  <%= @training.kcal %>
+  <%= @training.kcal %>kcal
 </p>
 
-<p>
-  <strong>投稿日:</strong>
-  <%= @training.start_time %>
-</p>
+
+<table>
+  <tr>
+    <th><strong>カテゴリー</strong></th>
+    <th><strong>フィットスキル</strong></th>
+    <th><strong>回数</strong></th>
+  </tr>
+  <% @training.fitskills.each do |fitskill| %>
+  <tr>
+    <td><%= fitskill.category %></td>
+    <td><%= fitskill.fitskill %></td>
+    <td><%= fitskill.count %></td>
+    <td><%= fitskill.user_id %></td>
+  </tr>
+  <% end %>
+</table>
+
+
+
 
 <%= link_to 'Edit', edit_training_path(@training) %> |
 <%= link_to 'Back', trainings_path %>

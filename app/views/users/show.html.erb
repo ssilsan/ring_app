@@ -1,4 +1,4 @@
-<table border=1px>
+<table border>
   <thead>
     <th>名前</th>
     <th>メールアドレス</th>
@@ -11,3 +11,18 @@
   </tbody>
 </table>
 <hr>
+
+<table>
+  <tr>
+    <th><strong>カテゴリー</strong></th>
+    <th><strong>フィットスキル</strong></th>
+    <th><strong>回数</strong></th>
+  </tr>
+  <% @user.fitskills.each do |fitskill| %>
+  <tr>
+    <td><%= fitskill.category %></td>
+    <td><%= fitskill.fitskill %></td>
+    <td><%= fitskill.count %></td>
+  </tr>
+  <% end %>
+</table>

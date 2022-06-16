@@ -1,4 +1,4 @@
-<%= form_with(model: training) do |form| %>
+<%= form_with(model: training) do |f| %>
 <% if training.errors.any? %>
 <div id="error_explanation">
   <h2><%= pluralize(training.errors.count, "error") %> prohibited this training from being saved:</h2>
@@ -12,21 +12,36 @@
 <% end %>
 
 <div class="field">
-  <%= form.label :走行距離 %>
-  <%= form.number_field :mileage %>
+  <%= f.label :走行距離 %>
+  <%= f.number_field :mileage %>
 </div>
 
 <div class="field">
-  <%= form.label :消費kcal %>
-  <%= form.number_field :kcal %>
+  <%= f.label :消費kcal %>
+  <%= f.number_field :kcal %>
 </div>
 
 <div class="field">
-  <%= form.label :投稿日 %>
-  <%= form.datetime_select :start_time%>
+  <%= f.label :投稿日 %>
+  <%= f.datetime_select :start_time%>
 </div>
 
+<div class="add-botton-box">
+  <%= link_to_add_association "追加ボタン", f, :fitskills,
+class: "fitskill_fields",
+id: "add-btn",
+data: {
+association_insertion_node: "#detail-association-insertion-point",
+association_insertion_method: "after" 
+}
+%>
+</div>
+<div id="detail-association-insertion-point"></div>
+
+<%= f.fields_for :fitskills do |form| %>
+<%= render "fitskill_fields", f: form %>
+<% end %>
 <div class="actions">
-  <%= form.submit %>
+  <%= f.submit %>
 </div>
 <% end %>

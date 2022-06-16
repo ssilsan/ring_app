@@ -7,11 +7,14 @@ class TrainingsController < ApplicationController
   end
 
   # GET /trainings/1 or /trainings/1.json
-  def show; end
+  def show
+    @fitskill = @training.fitskills.build
+  end
 
   # GET /trainings/new
   def new
     @training = Training.new
+    @fitskill = @training.fitskills.build
   end
 
   # GET /trainings/1/edit
@@ -79,7 +82,13 @@ class TrainingsController < ApplicationController
   def training_params
     params
       .require(:training)
-      .permit(:mileage, :kcal, :start_time)
+      .permit(
+        { images: [] },
+        :mileage,
+        :kcal,
+        :start_time,
+        fitskills_attributes: %i[user_id category fitskill count _destroy],
+      )
       .merge(user_id: current_user.id)
   end
 end
