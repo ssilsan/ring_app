@@ -1,5 +1,29 @@
-<h1>Trainings</h1>
+<%= link_to 'New Training', new_training_path %>
 
+<%= month_calendar events: @trainings do |date, trainings| %>
+<%= date.day %>
+<% trainings.each do |training| %>
+<% if training.user_id == current_user.id %>
+<div class="training-contents">
+  <table>
+    <thead>
+      <tr>
+        <th><%= link_to '消費カロリー', training_path(training.id) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= link_to training.kcal, training_path(training.id) %>kcal</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<% end %>
+<% end %>
+<% end %>
+
+<hr>
+<h1>トレーニング</h1>
 <table>
   <thead>
     <tr>
@@ -12,45 +36,16 @@
 
   <tbody>
     <% @trainings.each do |training| %>
-
     <tr>
       <% if training.user_id == current_user.id %>
       <td><%= training.mileage %>km</td>
       <td><%= training.kcal %>kcal</td>
       <td><%= training.start_time %></td>
-      <td><%= link_to 'Show', training %></td>
-      <td><%= link_to 'Edit', edit_training_path(training) %></td>
-      <td><%= link_to 'Destroy', training, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to '詳細', training %></td>
+      <td><%= link_to '編集', edit_training_path(training) %></td>
+      <td><%= link_to '削除', training, method: :delete, data: { confirm: '削除しますか?' } %></td>
     </tr>
     <% end %>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Training', new_training_path %>
-
-<%= month_calendar events: @trainings do |date, trainings| %>
-<%= date.day %>
-<% trainings.each do |training| %>
-<% if training.user_id == current_user.id %>
-<div class="training-contents">
-  <table>
-    <thead>
-      <tr>
-        <th>走行距離</th>
-        <th>消費カロリー</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= training.mileage %>km</td>
-        <td><%= training.kcal %>kcal</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<% end %>
-<% end %>
-<% end %>

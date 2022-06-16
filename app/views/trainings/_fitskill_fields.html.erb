@@ -1,19 +1,13 @@
 <div class="nested-fields">
   <table>
     <tr>
-      <td class="td-fixed-select">
-        <% thing_options = Thing.order(:id).map { |c| [c.thing_name, c.id, data: { unit: c.unit, spoon:c.spoon }] }%>
-        <%= f.select(:thing_id, thing_options, { prompt: "---"}, {class:"select", data:{select:0}, id:"thing-select" })%>
+      <td>
+        <%= f.text_field :category %>
+        <%= f.text_field :fitskill %>
+        <%= f.number_field :count %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
       </td>
-
-      <td class="td-fixed-spoon">
-        <span class="box-spoon" id="spoon-auto" data-spoon='0'></span>
-      </td>
-
-      <td class="td-fixed-unit">
-        <span class="box-unit" id='unit-auto' data-unit='0'></span>
-      </td>
-      <td class="td-fixed-delete">
+      <td>
         <%= link_to_remove_association "削除", f %>
     </tr>
   </table>

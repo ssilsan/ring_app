@@ -7,7 +7,9 @@ class TrainingsController < ApplicationController
   end
 
   # GET /trainings/1 or /trainings/1.json
-  def show; end
+  def show
+    @fitskill = @training.fitskills.build
+  end
 
   # GET /trainings/new
   def new
@@ -85,7 +87,7 @@ class TrainingsController < ApplicationController
         :mileage,
         :kcal,
         :start_time,
-        fitskills_attributes: %i[id category fitskill count _destroy],
+        fitskills_attributes: %i[user_id category fitskill count _destroy],
       )
       .merge(user_id: current_user.id)
   end

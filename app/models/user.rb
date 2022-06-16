@@ -7,4 +7,7 @@ class User < ApplicationRecord
          :rememberable,
          :validatable
   validates :name, { presence: true, uniqueness: true }
+  def fitskills
+    return Fitskill.where(user_id: self.id)
+  end
 end

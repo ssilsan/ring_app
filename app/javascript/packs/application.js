@@ -7,11 +7,9 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import "cocoon-js";
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 require("jquery")
-require("src/cocoon")
 require("@nathanvda/cocoon")
